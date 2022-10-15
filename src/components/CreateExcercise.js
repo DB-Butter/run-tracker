@@ -25,7 +25,7 @@ function CreateExcercise(props) {
             description: description,
             duration: duration,
         }
-        fetch('http://localhost:4000/excercises/add', {method: 'POST', mode: "cors", body: JSON.stringify(form), headers: {"Content-Type": "application/json"}});
+        fetch('https://morning-castle-01481.herokuapp.com/excercises/add', {method: 'POST', mode: "cors", body: JSON.stringify(form), headers: {"Content-Type": "application/json"}});
         navigate("/")
         window.location.reload()
     }

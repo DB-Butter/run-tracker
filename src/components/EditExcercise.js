@@ -26,7 +26,7 @@ function CreateExcercise(props) {
 
     function deleteSubmit(e) {
         e.preventDefault();
-        fetch(`http://localhost:4000/excercises/${id}`, {method: 'DELETE', mode: "cors"});
+        fetch(`https://morning-castle-01481.herokuapp.com/excercises/${id}`, {method: 'DELETE', mode: "cors"});
         navigate('/')
         window.location.reload()
     }

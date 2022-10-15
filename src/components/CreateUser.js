@@ -16,7 +16,7 @@ function CreateUser(props) {
         const form = {
             username: username,
         }
-        fetch('http://localhost:4000/users/add', {method: 'POST', mode: "cors", body: JSON.stringify(form), headers: {"Content-Type": "application/json"}});
+        fetch('https://morning-castle-01481.herokuapp.com/users/add', {method: 'POST', mode: "cors", body: JSON.stringify(form), headers: {"Content-Type": "application/json"}});
         navigate("/")
         window.location.reload()
     }
