@@ -10,7 +10,7 @@ import CreateUser from "./components/CreateUser";
 
 
 function App() {
-  const URL = "http://localhost:4000/"
+  const URL = "https://morning-castle-01481.herokuapp.com/"
   const [allExcercises, setAllExercises] = useState(null)
   const [allUsers, setAllUsers] = useState(null)
 
