@@ -6,7 +6,7 @@ function ExcercisesList(props) {
     let excercises = []
     const populate = () => {
         for(let i=0;i<allExcercises.length;i++){
-            let editUrl=`https:run-tracker-is.online/edit/${allExcercises[i]._id}`
+            let editUrl=`https://run-tracker-is.online/edit/${allExcercises[i]._id}`
             excercises.push(<div key={i} className="container">
                 <h3>Excercise: {allExcercises[i].description}</h3>
                 <p>For: {allExcercises[i].duration} minutes</p>
