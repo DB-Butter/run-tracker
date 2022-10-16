@@ -1,14 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router";
 
-function CreateExcercise(props) {
+function EditExcercise(props) {
     let initForm = {
         username: "",
         description: "",
         duration: 0,
     }
-
+    
     const initState = "";
     const [username, setUsername] = useState("")
     const [description, setDescription] = useState(initState)
@@ -24,13 +24,19 @@ function CreateExcercise(props) {
         setDuration(e.target.value)
     }
 
-    function deleteSubmit(e) {
-        e.preventDefault();
-        fetch(`https://morning-castle-01481.herokuapp.com/excercises/${id}`, {method: 'DELETE', mode: "cors"});
-        navigate('/')
+    function reload() {
         window.location.reload()
     }
-
+    const [finished, setFinished] = useState(false)
+    function checkFinished() {
+        if(finished === false) {
+            setFinished(true)
+            window.setTimeout(checkFinished, 150)
+        } else {
+            navigate('/')
+            reload()
+        }
+    }
     function onSubmit(e) {
         e.preventDefault();
         const form = {
@@ -39,8 +45,15 @@ function CreateExcercise(props) {
             duration: duration,
         }
         fetch(`https://morning-castle-01481.herokuapp.com/excercises/update/${id}`, {method: 'PUT', mode: "cors", body: JSON.stringify(form), headers: {"Content-Type": "application/json"}});
-        navigate('/')
-        window.location.reload()
+        console.log(`${id}`)
+        console.log(JSON.stringify(form))
+        checkFinished()
+    }
+
+    function deleteSubmit(e) {
+        e.preventDefault();
+        fetch(`https://morning-castle-01481.herokuapp.com/excercises/${id}`, {method: 'DELETE', mode: "cors"});
+        checkFinished()
     }
 
     const navigate = useNavigate();
@@ -53,13 +66,13 @@ function CreateExcercise(props) {
         }
     }
     {props.allUsers ? populate() : console.log('Loading...')}
-    
+
     return(
         <div className="form-page">
             <h2>Edit Log</h2>
             <form onSubmit={onSubmit} className="container">
                 <label htmlFor="username">
-                    Username:
+                    Username:{" "}
                 <select required value={username} onChange={onChangeUsername}>
                     {
                         users.map(function(user) {
@@ -70,7 +83,7 @@ function CreateExcercise(props) {
                 </label>
                 <label htmlFor="description">
                     Description:
-                <input type="text" name="description" value={description} onChange={onChangeDescription}/>
+                <input placeholder="Enter your new description" className="description-input" type="text" name="description" value={description} onChange={onChangeDescription}/>
                 </label>
                 <label htmlFor="duration">
                     Duration (in minutes):
@@ -85,4 +98,4 @@ function CreateExcercise(props) {
     )
 }
 
-export default CreateExcercise;
+export default EditExcercise;

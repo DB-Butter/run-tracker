@@ -1,6 +1,11 @@
 body {
   background-image: linear-gradient(#200000, goldenrod);
+  background-repeat: no-repeat;
   color: #F95500;
+}
+
+.description-input {
+  width: 60%;
 }
 
 h3 {
@@ -23,6 +28,7 @@ h3 {
   padding-left: 1rem;
   padding-bottom: 1rem;
   background: linear-gradient(-45deg, #992500, #990000, #500000, #200000);
+  background-repeat: no-repeat;
   border-radius: 2rem;
 }
 

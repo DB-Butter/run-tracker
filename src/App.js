@@ -41,7 +41,7 @@ function App() {
         <br />
         <Routes>
           <Route exact path="/" element={<ExcercisesList allExcercises={allExcercises}/>} />
-          <Route path="/edit/:id" element={<EditExcercise allUsers={allUsers}/>} />
+          <Route path="/edit/:id" element={<EditExcercise allUsers={allUsers} allExcercises={allExcercises}/>} />
           <Route path="/create" element={<CreateExcercise allUsers={allUsers}/>} />
           <Route path="/user" element={<CreateUser/>} />  
         </Routes>

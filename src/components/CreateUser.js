@@ -11,14 +11,27 @@ function CreateUser(props) {
         setUsername(e.target.value)
     }
 
+    function reload() {
+        window.location.reload()
+    }
+    const [finished, setFinished] = useState(false)
+    function checkFinished() {
+        if(finished === false) {
+            setFinished(true)
+            window.setTimeout(checkFinished, 100)
+        } else {
+            navigate('/')
+            reload()
+        }
+    }
+
     function onSubmit(e) {
         e.preventDefault();
         const form = {
             username: username,
         }
         fetch('https://morning-castle-01481.herokuapp.com/users/add', {method: 'POST', mode: "cors", body: JSON.stringify(form), headers: {"Content-Type": "application/json"}});
-        navigate("/")
-        window.location.reload()
+        checkFinished()
     }
 
     return(

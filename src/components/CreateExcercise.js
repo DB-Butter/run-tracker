@@ -18,6 +18,20 @@ function CreateExcercise(props) {
         setDuration(e.target.value)
     }
 
+    function reload() {
+        window.location.reload()
+    }
+    const [finished, setFinished] = useState(false)
+    function checkFinished() {
+        if(finished === false) {
+            setFinished(true)
+            window.setTimeout(checkFinished, 150)
+        } else {
+            navigate('/')
+            reload()
+        }
+    }
+
     const onSubmit = (e) => {
         e.preventDefault();
         const form = {
@@ -26,8 +40,7 @@ function CreateExcercise(props) {
             duration: duration,
         }
         fetch('https://morning-castle-01481.herokuapp.com/excercises/add', {method: 'POST', mode: "cors", body: JSON.stringify(form), headers: {"Content-Type": "application/json"}});
-        navigate("/")
-        window.location.reload()
+        checkFinished()
     }
     const users = []
     const populate = () => {
@@ -40,6 +53,9 @@ function CreateExcercise(props) {
         <div className="form-page">
             <h2>Create New Log</h2>
             <form onSubmit={(e) => onSubmit(e)} className="container">
+                <br/>
+                <label htmlFor="username">
+                    Username:{" "}
                 <select required value={username} onChange={onChangeUsername}>
                     {
                         users.map(function(user) {
@@ -47,9 +63,10 @@ function CreateExcercise(props) {
                         })
                     }
                 </select>
+                </label>
                 <label htmlFor="description">
                     Description:
-                <input type="text" name="description" value={description} onChange={onChangeDescription}/>
+                <input placeholder="Enter your excercise description" className="description-input" type="text" name="description" value={description} onChange={onChangeDescription}/>
                 </label>
                 <label htmlFor="duration">
                     Duration (in minutes):
