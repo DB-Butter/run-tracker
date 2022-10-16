@@ -24,7 +24,7 @@ function CreateUser(props) {
     return(
         <div className="form-page">
             <h2>Create New User</h2>
-            <form onSubmit={onSubmit}>
+            <form onSubmit={onSubmit} className="container">
                 <label htmlFor="username">
                     Username:
                 <input type="text" name="username" value={username} onChange={onChangeUsername}/>

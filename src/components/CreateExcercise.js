@@ -39,7 +39,7 @@ function CreateExcercise(props) {
     return(
         <div className="form-page">
             <h2>Create New Log</h2>
-            <form onSubmit={(e) => onSubmit(e)}>
+            <form onSubmit={(e) => onSubmit(e)} className="container">
                 <select required value={username} onChange={onChangeUsername}>
                     {
                         users.map(function(user) {

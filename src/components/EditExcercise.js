@@ -57,7 +57,7 @@ function CreateExcercise(props) {
     return(
         <div className="form-page">
             <h2>Edit Log</h2>
-            <form onSubmit={onSubmit}>
+            <form onSubmit={onSubmit} className="container">
                 <label htmlFor="username">
                     Username:
                 <select required value={username} onChange={onChangeUsername}>
@@ -78,7 +78,7 @@ function CreateExcercise(props) {
                 </label>
                 <input type="submit" value="Edit Log" className="submit"/>
             </form>
-            <form onSubmit={deleteSubmit}>
+            <form onSubmit={deleteSubmit} className="container">
                 <input type="submit" value="Delete This Log" className="submit"/>
             </form>
         </div>

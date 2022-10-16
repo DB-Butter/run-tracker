@@ -1,5 +1,9 @@
 body {
-  background-color: #330000;
+  background-image: linear-gradient(#200000, goldenrod);
+  color: #F95500;
+}
+
+h3 {
   color: goldenrod;
 }
 
@@ -12,20 +16,41 @@ body {
 .container {
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
-  border: solid goldenrod 2px;
   margin-left: 3rem;
   margin-right: 3rem;
   margin-top: 1rem;
   padding-right: 1rem;
   padding-left: 1rem;
   padding-bottom: 1rem;
-  background-color: #500000;
+  background: linear-gradient(-45deg, #992500, #990000, #500000, #200000);
   border-radius: 2rem;
 }
 
+.container:hover {
+  border: solid goldenrod 2px;
+}
+
 .nav-link {
+  color: #FF5000;
+}
+
+.nav-links {
+  color: #FF5000;
   text-decoration: none;
-  color: #ff3300;
+  font-size: large;
+}
+
+.vr {
+  border-left: solid
+}
+
+.nav-links:hover {
+  color: #FF9000;
+}
+
+.icon {
+  margin-left: 1rem;
+  margin-top: 0.5rem;
 }
 
 ul {
@@ -33,19 +58,23 @@ ul {
 }
 
 .navbar{
-  background-color: #200000;
+  background: linear-gradient(-45deg, #990000, #990000, #500000, #200000);
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
-  border: solid 3px #ff3300;
-  border-radius: 2rem;
+  display: flex;
 }
 
 .navbar-list{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+}
+
+.list-item {
+  margin-left: 5vw;
+  margin-right: 5vw;
 }
 
 .form-page{
